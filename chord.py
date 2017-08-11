@@ -17,7 +17,7 @@ print (chordOrd)
 	
 # Create a PrettyMIDI object
 guitar_c_chord = pretty_midi.PrettyMIDI()
-# Create an Instrument instance for a cello instrument
+# Create an Instrument instance for a guitar instrument
 guitar_program = pretty_midi.instrument_name_to_program('Acoustic Guitar (nylon)')
 #cello_program = pretty_midi.instrument_name_to_program('Acoustic Grand Piano')
 guitar = pretty_midi.Instrument(program=guitar_program)
@@ -44,7 +44,7 @@ for i in chordOrd:
 		print (note_number)
 		# Create a Note instance for this note, starting at 0s and ending at .5s
 		note = pretty_midi.Note(velocity=100, pitch=note_number, start=2.0*time, end=2.0*(time+1))
-		# Add it to our cello instrument
+		# Add it to our guitar instrument
 		guitar.notes.append(note)
 	drumNote = pretty_midi.Note(velocity=100, pitch=40, start=2.0*time, end=2.0*(time+0.1))
 	drum.notes.append(drumNote)
@@ -61,7 +61,7 @@ for i in chordOrd:
     #
 	time += 1
 	
-# Add the cello instrument to the PrettyMIDI object
+# Add the guitar instrument to the PrettyMIDI object
 guitar_c_chord.instruments.append(guitar)
 guitar_c_chord.instruments.append(drum)
 guitar_c_chord.instruments.append(bass)
