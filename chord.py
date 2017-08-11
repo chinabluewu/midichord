@@ -16,11 +16,11 @@ random.shuffle(chordOrd)
 print (chordOrd)
 	
 # Create a PrettyMIDI object
-cello_c_chord = pretty_midi.PrettyMIDI()
+guitar_c_chord = pretty_midi.PrettyMIDI()
 # Create an Instrument instance for a cello instrument
-cello_program = pretty_midi.instrument_name_to_program('Acoustic Guitar (nylon)')
+guitar_program = pretty_midi.instrument_name_to_program('Acoustic Guitar (nylon)')
 #cello_program = pretty_midi.instrument_name_to_program('Acoustic Grand Piano')
-cello = pretty_midi.Instrument(program=cello_program)
+guitar = pretty_midi.Instrument(program=guitar_program)
 
 drum = pretty_midi.Instrument(117) #drum
 
@@ -45,7 +45,7 @@ for i in chordOrd:
 		# Create a Note instance for this note, starting at 0s and ending at .5s
 		note = pretty_midi.Note(velocity=100, pitch=note_number, start=2.0*time, end=2.0*(time+1))
 		# Add it to our cello instrument
-		cello.notes.append(note)
+		guitar.notes.append(note)
 	drumNote = pretty_midi.Note(velocity=100, pitch=40, start=2.0*time, end=2.0*(time+0.1))
 	drum.notes.append(drumNote)
 	
@@ -62,9 +62,11 @@ for i in chordOrd:
 	time += 1
 	
 # Add the cello instrument to the PrettyMIDI object
-cello_c_chord.instruments.append(cello)
-cello_c_chord.instruments.append(drum)
-cello_c_chord.instruments.append(bass)
+guitar_c_chord.instruments.append(guitar)
+guitar_c_chord.instruments.append(drum)
+guitar_c_chord.instruments.append(bass)
 # Write out the MIDI data
-cello_c_chord.write('random-C-chord&drum&bass.mid')
+guitar_c_chord.write('random-C-chord&drum&bass.mid')
+
+
 
